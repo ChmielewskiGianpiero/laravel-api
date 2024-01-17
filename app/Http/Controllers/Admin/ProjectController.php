@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
@@ -45,6 +46,8 @@ class ProjectController extends Controller
         );
 
         $data = $request->all();
+        $data['slug'] = Str::slug($data['title'], '-');
+
         $project = Project::create($data);
 
         if ($request->has('technologies')){

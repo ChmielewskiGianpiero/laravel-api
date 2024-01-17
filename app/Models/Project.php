@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','content','type_id'];
+    protected $fillable = ['title','content','slug','type_id',];
 
     public function type(){
 
-        return $this->belongsTo(Type::class); 
-         
+        return $this->belongsTo(Type::class);
+
     }
 
     public function technologies()
